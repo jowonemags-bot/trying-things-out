@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aidly: Edit your profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">AIDLY<small>Edit your emergency profile</small></div>
+    <a class="btn quiet viewlink" href="index.html">Scan page</a>
+    <button type="button" class="btn quiet smallbtn" id="lock" hidden>Lock</button>
+  </header>
+
+  <p id="demoBanner" class="banner" hidden>Demo mode: the database is not connected yet, so changes are saved only in this browser and there is no edit code. See SETUP.md.</p>
+
+  <section id="login" class="edit" hidden>
+    <p class="note">Enter the bracelet ID and the edit code that came with your bracelet to view or change its emergency profile.</p>
+    <form id="unlockForm" novalidate>
+      <label>Bracelet ID<input id="bid" autocomplete="off" autocapitalize="none" spellcheck="false" required></label>
+      <label>Edit code<input id="code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABCD-EFGH-JKMN" required></label>
+      <button class="btn main" type="submit">Unlock</button>
+    </form>
+    <p id="loginStatus" role="status"></p>
+  </section>
+
+  <form id="f" class="edit" novalidate hidden>
+    <p class="note">Anyone who scans your bracelet can see what you save here. Add only what a responder needs, and do not add ID numbers or addresses.</p>
+
+    <fieldset>
+      <legend>About you</legend>
+      <label>Full name<input id="name" autocomplete="name" required></label>
+      <div class="two">
+        <label>Age<input id="age" type="number" inputmode="numeric" min="0" max="120"></label>
+        <label>Blood type
+          <select id="blood">
+            <option>Unknown</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+            <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+          </select>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Emergency contact</legend>
+      <label>Contact name<input id="cname" required></label>
+      <div class="two">
+        <label>Relationship (English)<input id="relEn" placeholder="sister"></label>
+        <label>Relationship (Filipino, optional)<input id="relFil" placeholder="kapatid"></label>
+      </div>
+      <label>Phone number<input id="phone" type="tel" inputmode="tel" required></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Allergies</legend>
+      <div id="allergies"></div>
+      <button type="button" class="btn quiet" data-add="allergies">Add an allergy</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Medical conditions</legend>
+      <div id="conditions"></div>
+      <button type="button" class="btn quiet" data-add="conditions">Add a condition</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Medications</legend>
+      <div id="meds"></div>
+      <button type="button" class="btn quiet" data-add="meds">Add a medication</button>
+    </fieldset>
+
+    <div id="shareBox" class="share" hidden>
+      <label>Your scan link. This is what goes on the NFC tag.<input id="shareLink" readonly></label>
+      <button type="button" class="btn quiet" id="copy">Copy link</button>
+    </div>
+
+    <div class="savebar">
+      <p id="status" role="status"></p>
+      <p class="note" style="margin:0">By saving, you agree that this information is stored online and shown to anyone who opens your link.</p>
+      <button type="submit" class="btn main">Save changes</button>
+      <button type="button" class="btn quiet" id="reset" hidden>Reset to demo profile</button>
+    </div>
+  </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="storage.js"></script>
+<script src="edit.js"></script>
+</body>
+</html>

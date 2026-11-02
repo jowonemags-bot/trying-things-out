@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aidly: Emergency Profile</title>
+<!-- PROTOTYPE. All data below is fictional (Migi Santos persona).
+     Before real use: have a doctor verify the "What to do" steps, and re-check every hotline number. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="mark" aria-hidden="true">
+      <i></i><i></i><i></i>
+      <svg viewBox="0 0 44 44" fill="none" stroke="#2F5FBF" stroke-width="2">
+        <circle cx="22" cy="22" r="20"/><circle cx="22" cy="22" r="14" opacity=".55"/>
+        <path d="M19 13h6v6h6v6h-6v6h-6v-6h-6v-6h6z" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="brand">AIDLY<small data-i18n="tagline"></small></div>
+    <div class="lang" role="group" aria-label="Language">
+      <button data-lang="en" aria-pressed="true">EN</button>
+      <button data-lang="fil" aria-pressed="false">FIL</button>
+    </div>
+  </header>
+
+  <div class="who">
+    <h1 id="name"></h1>
+    <p class="meta" id="meta"></p>
+    <p class="summary" id="summary"></p>
+  </div>
+
+  <section class="alerts" aria-labelledby="alerts-h">
+    <h2 id="alerts-h" data-i18n="alerts"></h2>
+    <div id="alertList"></div>
+  </section>
+
+  <div class="actions">
+    <a class="btn main" id="callContact"></a>
+    <div class="row">
+      <a class="btn sos" href="tel:911" data-i18n="call911"></a>
+      <button class="btn" id="loc" data-i18n="sendLoc"></button>
+    </div>
+    <div class="row">
+      <a class="btn quiet" href="https://www.google.com/maps/search/hospital+near+me" target="_blank" rel="noopener" data-i18n="hospital"></a>
+      <button class="btn quiet" id="speak" data-i18n="speak"></button>
+    </div>
+  </div>
+
+  <section class="block" id="guideBlock">
+    <h3 data-i18n="guideH"></h3>
+    <div id="guide"></div>
+    <p class="note" data-i18n="sample"></p>
+  </section>
+
+  <section class="block">
+    <dl id="details"></dl>
+  </section>
+
+  <section class="block">
+    <details>
+      <summary data-i18n="more"></summary>
+      <p><a href="tel:911">911</a> <span data-i18n="h911"></span></p>
+      <p><a href="tel:143">143</a> Philippine Red Cross</p>
+      <p><a href="tel:+63285270000">(02) 8527-0000</a></p>
+      <p><a href="tel:+63287902300">(02) 8790-2300</a></p>
+    </details>
+  </section>
+
+  <footer data-i18n="demo"></footer>
+  <p class="owner" id="ownerLine" hidden><a id="ownerA" href="edit.html"></a></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="storage.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
